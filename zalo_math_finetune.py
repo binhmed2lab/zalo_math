@@ -213,7 +213,11 @@ def train(
     if len(wandb_log_model) > 0:
         os.environ["WANDB_LOG_MODEL"] = wandb_log_model
 
-    wandb.login(key=wandb_api_key)
+    if wandb_api_key is not None:
+        use_wandb = True
+        wandb.login(key=wandb_api_key)
+    else:
+        use_wandb = False
 
     tokenizer = AutoTokenizer.from_pretrained(base_model)
 
