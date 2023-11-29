@@ -215,8 +215,10 @@ def train(
 
     if wandb_api_key is not None:
         use_wandb = True
+        print("Use wandb")
         wandb.login(key=wandb_api_key)
     else:
+        print("Don't use wandb")
         use_wandb = False
 
     tokenizer = AutoTokenizer.from_pretrained(base_model)
